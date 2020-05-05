@@ -100,6 +100,88 @@ class SLL(object):
             new_node.next = n.next
             n.next = new_node
 
+    def search_item(self, x):
+        if self.head is None:
+            return False
+
+        n = self.head
+        while n is not None:
+            if n.data == x:
+                return True
+            n = n.next
+
+        return False
+
+    def delete_at_start(self):
+        if self.head is None:
+            print("Empty List")
+            return
+        n = self.head
+        self.head = n.next
+        del n
+
+    def delete_at_end(self):
+        if self.head is None:
+            print("Empty List")
+            return
+
+        n = self.head
+        while n.next.next is not None:
+            n = n.next
+
+        m = n.next
+        print(f"deleting ssl object {m} with data {m.data}") 
+        del m
+        n.next = None
+        return
+
+    def delete_at_index(self, idx):
+        if self.head is None:
+            print("empty list")
+            return
+
+        n = self.head
+        i = 1
+        if idx == 1:
+            self.head = n.next
+            del n
+        
+        while i < idx -1 and n is not None:
+            i += 1
+            n = n.next
+
+        if n is None:
+            print("index out of range")
+            return
+        else:
+            m = n.next
+            n.next = n.next.next
+            del m
+
+    def delete_item(self, x):
+        if self.head == None:
+            print("Empty List")
+            return
+
+        n = self.head
+        if n.data == x:
+            self.head = n.next
+            del n
+            return
+
+        while n.next is not None:
+            if n.next.data == x:
+                break
+            n = n.next
+
+        if n is None:
+            print(f"Item {x} not found")
+            return
+
+        m = n.next
+        n.next = n.next.next
+        del m
+        return
 
 if __name__ == '__main__':
 
@@ -109,5 +191,19 @@ if __name__ == '__main__':
     n.insert_after_this_data(2, 4)
     n.insert_before_this_data(4, 3)
     n.insert_at_index(5, 5)
+    n.insert_at_index(6, 6)
+    n.insert_at_index(7, 7)
+    n.insert_at_index(8, 8)
     n.traverse_list()
+    print(n.search_item(7))
+    print(n.search_item(3))
     print(n.get_count())
+    n.traverse_list()
+    n.delete_at_start()
+    n.traverse_list()
+    n.delete_at_end()
+    n.traverse_list()
+    n.delete_at_index(3)
+    n.traverse_list()
+    n.delete_item(6)
+    n.traverse_list()
