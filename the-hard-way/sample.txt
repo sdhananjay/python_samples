@@ -1,0 +1,3 @@
+this is new lthe very first line in the file sample .txt
+thisi aonanother line we are addin g into the same file
+this the final line
