@@ -15,7 +15,16 @@ class SLL(object):
         while n is not None:
             print(f"{n.data} -> ", end='')
             n = n.next
+        print(end='\n')
         return
+
+    def get_count(self):
+        count = 0
+        n = self.head
+        while n is not None:
+            n = n.next
+            count += 1
+        return count
 
     def add_at_start(self, data):
         new_node = Node(data)
@@ -101,3 +110,4 @@ if __name__ == '__main__':
     n.insert_before_this_data(4, 3)
     n.insert_at_index(5, 5)
     n.traverse_list()
+    print(n.get_count())
