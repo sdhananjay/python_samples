@@ -7,6 +7,19 @@ class SLL(object):
     def __init__(self):
         self.head = None
 
+    def reverse_linkedlist(self):
+        cur = None
+        n = self.head
+
+        while n.next.next is not None:
+            temp2 = n.next.next
+            temp1 = n.next
+            cur = n
+            cur.next = None
+            temp1.next = cur
+            n = nextnext
+        self.head = prev
+
     def traverse_list(self):
         if self.head == None:
             print("Empty List")
@@ -198,6 +211,7 @@ if __name__ == '__main__':
     print(n.search_item(7))
     print(n.search_item(3))
     print(n.get_count())
+    '''
     n.traverse_list()
     n.delete_at_start()
     n.traverse_list()
@@ -207,3 +221,7 @@ if __name__ == '__main__':
     n.traverse_list()
     n.delete_item(6)
     n.traverse_list()
+    '''
+    n.reverse_linkedlist()
+    n.traverse_list()
+
